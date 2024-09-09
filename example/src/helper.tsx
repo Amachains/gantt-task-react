@@ -6,12 +6,25 @@ export function initTasks() {
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
       end: new Date(currentDate.getFullYear(), currentDate.getMonth(), 15),
+      name: "Some Macro Project",
+      id: "MacroProjectSample",
+      progress: 20,
+      type: "project",
+      project: "",
+      hideChildren: false,
+      displayOrder: 1,
+    },
+    {
+      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
+      end: new Date(currentDate.getFullYear(), currentDate.getMonth(), 15),
       name: "Some Project",
       id: "ProjectSample",
       progress: 25,
       type: "project",
       hideChildren: false,
+      project: "MacroProjectSample",
       displayOrder: 1,
+
     },
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
