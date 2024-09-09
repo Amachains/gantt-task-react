@@ -67,6 +67,11 @@ const App = () => {
     console.log("On expander click Id:" + task.id);
   };
 
+  const handleClickLine = (tasks: Task[]) => {
+    console.log("On Click line:");
+    console.log(tasks[0])
+  }
+
   return (
     <div className="Wrapper">
       <ViewSwitcher
@@ -83,6 +88,7 @@ const App = () => {
         onProgressChange={handleProgressChange}
         onDoubleClick={handleDblClick}
         onClick={handleClick}
+        onClickLine={handleClickLine}
         onSelect={handleSelect}
         onExpanderClick={handleExpanderClick}
         listCellWidth={isChecked ? "155px" : ""}
@@ -98,6 +104,7 @@ const App = () => {
         onProgressChange={handleProgressChange}
         onDoubleClick={handleDblClick}
         onClick={handleClick}
+        onClickLine={handleClickLine}
         onSelect={handleSelect}
         onExpanderClick={handleExpanderClick}
         listCellWidth={isChecked ? "155px" : ""}
