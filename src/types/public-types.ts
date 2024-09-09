@@ -10,6 +10,13 @@ export enum ViewMode {
   Year = "Year",
 }
 export type TaskType = "task" | "milestone" | "project";
+
+export type LinkType = "EndToStart" | "EndToEnd" | "StartToStart" | "StartToEnd";
+
+export interface Link {
+  target: string;
+  type: LinkType;
+}
 export interface Task {
   id: string;
   type: TaskType;
@@ -29,6 +36,7 @@ export interface Task {
   isDisabled?: boolean;
   project?: string;
   dependencies?: string[];
+  links?: Array<Link>;
   hideChildren?: boolean;
   displayOrder?: number;
 }
@@ -51,6 +59,10 @@ export interface EventOption {
    */
   onClick?: (task: Task) => void;
   /**
+   * Invokes on bar click.
+   */
+  onClickLine?: (tasks: Task[]) => void;
+  /**
    * Invokes on end and start time change. Chart undoes operation if method return false or error.
    */
   onDateChange?: (
@@ -72,6 +84,10 @@ export interface EventOption {
    * Invokes on expander on task list
    */
   onExpanderClick?: (task: Task) => void;
+  /**
+   * Allow project date change
+   */
+  allowProjectDateChange?: boolean;
 }
 
 export interface DisplayOption {
@@ -83,6 +99,9 @@ export interface DisplayOption {
    */
   locale?: string;
   rtl?: boolean;
+  days?: string;
+  duration?: string;
+  progress?: string;
 }
 
 export interface StylingOption {
@@ -113,10 +132,15 @@ export interface StylingOption {
   arrowColor?: string;
   arrowIndent?: number;
   todayColor?: string;
+  weekendColor?: string;
   TooltipContent?: React.FC<{
     task: Task;
     fontSize: string;
     fontFamily: string;
+    locale: string;
+    days: string;
+    duration: string;
+    progress: string;
   }>;
   TaskListHeader?: React.FC<{
     headerHeight: number;

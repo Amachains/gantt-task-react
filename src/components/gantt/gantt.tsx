@@ -34,6 +34,9 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   viewMode = ViewMode.Day,
   preStepsCount = 1,
   locale = "en-GB",
+  days = "Days",
+  duration = "Duration",
+  progress = "Progress",
   barFill = 60,
   barCornerRadius = 3,
   barProgressColor = "#a3a3ff",
@@ -53,7 +56,8 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   fontFamily = "Arial, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue",
   fontSize = "14px",
   arrowIndent = 20,
-  todayColor = "rgba(252, 248, 227, 0.5)",
+  todayColor = "rgba(252, 248, 227, 1)",
+  weekendColor = "transparent",
   viewDate,
   TooltipContent = StandardTooltipContent,
   TaskListHeader = TaskListHeaderDefault,
@@ -62,9 +66,11 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   onProgressChange,
   onDoubleClick,
   onClick,
+  onClickLine,
   onDelete,
   onSelect,
   onExpanderClick,
+  allowProjectDateChange,
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const taskListRef = useRef<HTMLDivElement>(null);
@@ -394,6 +400,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     rowHeight,
     dates: dateSetup.dates,
     todayColor,
+    weekendColor,
     rtl,
   };
   const calendarProps: CalendarProps = {
@@ -428,7 +435,9 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     onProgressChange,
     onDoubleClick,
     onClick,
+    onClickLine,
     onDelete,
+    allowProjectDateChange
   };
 
   const tableProps: TaskListProps = {
@@ -474,6 +483,10 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
             svgContainerWidth={svgContainerWidth}
             fontFamily={fontFamily}
             fontSize={fontSize}
+            locale={locale}
+            days={days}
+            duration={duration}
+            progress={progress}
             scrollX={scrollX}
             scrollY={scrollY}
             task={ganttEvent.changedTask}

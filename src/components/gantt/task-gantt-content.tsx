@@ -54,7 +54,9 @@ export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
   onProgressChange,
   onDoubleClick,
   onClick,
+  onClickLine,
   onDelete,
+  allowProjectDateChange,
 }) => {
   const point = svg?.current?.createSVGPoint();
   const [xStep, setXStep] = useState(0);
@@ -266,7 +268,8 @@ export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
         {tasks.map(task => {
           return task.barChildren.map(child => {
             return (
-              <Arrow
+              <Arrow 
+                onClickLine={(tasks: BarTask[]) => onClickLine ? onClickLine(tasks) : null}
                 key={`Arrow from ${task.id} to ${tasks[child.index].id}`}
                 taskFrom={task}
                 taskTo={tasks[child.index]}
@@ -283,6 +286,7 @@ export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
         {tasks.map(task => {
           return (
             <TaskItem
+              allowProjectDateChange={allowProjectDateChange}
               task={task}
               arrowIndent={arrowIndent}
               taskHeight={taskHeight}

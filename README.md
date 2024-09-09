@@ -79,6 +79,7 @@ npm start
 | onProgressChange\* | (task: Task, children: Task[]) => void/boolean/Promise<void>/Promise<boolean> | Specifies the function to be executed when drag taskbar progress event has finished.    |
 | onExpanderClick\*  | onExpanderClick: (task: Task) => void;                                        | Specifies the function to be executed on the table expander click                       |
 | timeStep           | number                                                                        | A time step value for onDateChange. Specify in milliseconds.                            |
+| allowProjectDateChange           | boolean                                                                        | Allows change of project date
 
 \* Chart undoes operation if method return false or error. Parameter children returns one level deep records.
 
@@ -91,6 +92,9 @@ npm start
 | preStepsCount  | number  | Specifies empty space before the fist task                                                                  |
 | locale         | string  | Specifies the month name language. Able formats: ISO 639-2, Java Locale.                                    |
 | rtl            | boolean | Sets rtl mode.                                                                                              |
+| days           | string  | Specifies the translation of the day                                                                        |
+| duration       | string  | Specifies the translation of the duration                                                                   |
+| progress       | string  | Specifies the progress translation                                                                          |
 
 ### StylingOption
 
@@ -112,7 +116,8 @@ npm start
 | barBackgroundSelectedColor | string | Specifies the taskbar background fill color globally on select.                                |
 | arrowColor                 | string | Specifies the relationship arrow fill color.                                                   |
 | arrowIndent                | number | Specifies the relationship arrow right indent. Sets in px                                      |
-| todayColor                 | string | Specifies the current period column fill color.                                                |
+| todayColor                 | string | Specifies the current period column fill color.    
+| weekendColor                 | string | Specifies the current period column fill color.                                                |
 | TooltipContent             |        | Specifies the Tooltip view for selected taskbar.                                               |
 | TaskListHeader             |        | Specifies the task list Header view                                                            |
 | TaskListTable              |        | Specifies the task list Table view                                                             |
