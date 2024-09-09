@@ -1,6 +1,6 @@
 {
   "name": "@amachains/gantt-task-react",
-  "version": "0.4.0-rc",
+  "version": "0.4.0-rc1",
   "description": "Fork from interactive Gantt Chart for React with TypeScript from MaTeMaTuK repository.",
   "author": "Billy Pinheiro <haquiticos@gmail.com>",
   "homepage": "https://github.com/Amachains//gantt-task-react",
